@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
+    private int sanity;
+    public int damage;
     public float movespeed = 5f;
     public Rigidbody2D rb;
     Vector2 movement;
-    public bool useController;
+    public new GameObject light;
     Animator playerAnimator;
-    private int countItem;
 
     // Start is called before the first frame update
     void Start()
     {
+        sanity = 100;
         playerAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(sanity>0)
+        { 
             movement = Vector2.zero;
             movement.x = Input.GetAxisRaw("Horizontal");
             movement.y = Input.GetAxisRaw("Vertical");
             UpdateAnimationAndMove();
+        }
+        else
+        {
+            movement = Vector2.zero;
+        }
     }
 
     void MoveCharacter()
@@ -48,12 +56,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("interactableObject"))
         {
             other.gameObject.SetActive(false);
-            countItem = countItem + 1;
+            sanity = sanity - damage;
+            if(sanity <= 0)
+            {
+                playerAnimator.SetBool("alive", false);
+                light.SetActive(false);
+            }
         }
     }
 }
