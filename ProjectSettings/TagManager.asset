@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - interactableObject
+  - TreesManagement
   layers:
   - Default
   - TransparentFX
@@ -44,4 +45,10 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1350370695
+    locked: 0
+  - name: Environment
+    uniqueID: 958252605
+    locked: 0
+  - name: GUI
+    uniqueID: 933998527
     locked: 0

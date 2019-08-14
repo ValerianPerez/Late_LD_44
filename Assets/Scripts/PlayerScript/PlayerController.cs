@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.LWRP;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float movespeed = 5f;
     public Rigidbody2D rb;
     Vector2 movement;
-    public new GameObject light;
+    public Light2D light;
     Animator playerAnimator;
 
     // Start is called before the first frame update
@@ -60,13 +61,17 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("interactableObject"))
         {
-            other.gameObject.SetActive(false);
+            Destroy(other.gameObject);
+
             sanity = sanity - damage;
             if(sanity <= 0)
             {
                 playerAnimator.SetBool("alive", false);
-                light.SetActive(false);
+                light.gameObject.SetActive(false);
             }
+
+            light.pointLightOuterAngle += 10;
+            light.pointLightInnerAngle += 7;
         }
     }
 }
