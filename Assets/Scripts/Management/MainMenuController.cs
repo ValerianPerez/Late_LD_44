@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuController : GameController 
 {
@@ -38,5 +39,16 @@ public class MainMenuController : GameController
         this.audioSource.Play();
     }
 
+    void Update()
+    {
+        if (Input.anyKeyDown)
+        {
+            SceneManager.LoadScene("Jeu");
+        }
+    }
+
+
+
     #endregion Unity Built In
+
 }
