@@ -20,6 +20,8 @@ public class PoIController : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             TextToDisplay.SetActive(false);
+
+
         }
     }
 }

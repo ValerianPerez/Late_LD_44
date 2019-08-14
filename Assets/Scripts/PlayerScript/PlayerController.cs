@@ -70,8 +70,8 @@ public class PlayerController : MonoBehaviour
                 light.gameObject.SetActive(false);
             }
 
-            light.pointLightOuterAngle += 10;
-            light.pointLightInnerAngle += 7;
+            light.pointLightOuterAngle += 20;
+            light.pointLightInnerAngle += 15;
         }
     }
 }
