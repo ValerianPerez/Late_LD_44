@@ -64,7 +64,7 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
 
             sanity = sanity - damage;
-            if(sanity <= 0)
+            if(sanity <= 90)
             {
                 playerAnimator.SetBool("alive", false);
                 light.gameObject.SetActive(false);
